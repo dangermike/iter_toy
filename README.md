@@ -14,10 +14,10 @@ This was meant to be a toy and I would not reach for the sort-of-functional styl
 func reduce[T any, U any](src iter.Seq[T], initial U, combine func(agg U, val T) (U, error)) (U, error)
 func numbers() iter.Seq[int]
 func numbersFrom(i int) iter.Seq[int]
-func fibs() iter.Seq[*big.Int] {
-func limit[T any](src iter.Seq[T], cnt int) iter.Seq[T] {
-func limit2[T any, U any](src iter.Seq2[T, U], cnt int) iter.Seq2[T, U] {
-func zip[T any, U any](a iter.Seq[T], b iter.Seq[U]) iter.Seq2[T, U] {
+func fibs() iter.Seq[*big.Int]
+func limit[T any](src iter.Seq[T], cnt int) iter.Seq[T]
+func limit2[T any, U any](src iter.Seq2[T, U], cnt int) iter.Seq2[T, U]
+func zip[T any, U any](a iter.Seq[T], b iter.Seq[U]) iter.Seq2[T, U]
 ```
 
 The fact that we're using generics here reminds me of [this excellent article by Vicent Marti](https://planetscale.com/blog/generics-can-make-your-go-code-slower) about how generics create additional virtualization (allocations) when interfaces are involved[¹](#note1). I was going to compare what happened when using a plain type (`int`) and some interface. However, that didn't happen.
